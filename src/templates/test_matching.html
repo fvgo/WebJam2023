@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% extends "base.html" %}
+    {% block title %}{{title}}{% endblock %}
+    {% block content %}
+    <h1 class="display-1 text-center">{{title}}</h1>
+    {% if method == "GET" %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-3 align-items-center">
+                <form method="POST">
+                    <label> Guess the password </label>
+                    <input type="password" class="form-control" name="pwd">
+                    <!-- form-control allows handling of submission for user experience -->
+                </form>
+            </div>
+        </div>
+    </div>
+    {% elif method == "POST" %}
+    <div class="container">
+        <div class="row justify-content-center">
+            {% if value == "password" %}
+            <p class="display-6 text-center"> You got it right! </p>
+            {% else %}
+            <p class="display-6 text-center"> {{value}} was not the right password </p>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+    {% endblock %}
+</html>

@@ -1,0 +1,14 @@
+{% block top %}
+<head>
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css')}}">
+</head>
+
+<nav class="navbar navbar-light navbar-bg-light">
+    <a class="navbar-brand px-2" href="/">Return to home</a>
+</nav>
+
+{% block content %}{% endblock %}
+
+<script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+{% endblock %}

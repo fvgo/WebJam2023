@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <h1>
-        Test If for Jinja
-        </h1>
-    </head>
-    <form method="POST">
-        <label>Value: </label>
-        <input type="text" name="value" id="value">
-        <!-- Type determines the type of form. Name will associate the value when submitted-->
-        <input type="submit" value="Click here to test the if statement.">
-        <!-- Submit will perform the POST operation to the website, value here shows text on the button-->
-    </form>
-    {% if value %}
-    <p>There is a value</p>
-    {% else %}
-    <p>There is not a value</p>
-    {% endif %}
+    {% extends "base.html" %}
+    {% block title %}{{title}}{% endblock %}
+    {% block content %}
+    <div class="container">
+        <div class="row align-items-center text-center">
+            <h1 class="display-1">{{title}}</h1>
+            <form method="POST">
+                    <label>Value: </label>
+                    <input type="text" name="value" id="value">
+                    <!-- Type determines the type of form. Name will associate the value when submitted-->
+                    <input type="submit" value="Click here to test the if statement.">
+                    <!-- Submit will perform the POST operation to the website, value here shows text on the button-->
+                </form>
+            </div>
+            <div class="row align-items-center text-center pt-3">
+                {% if value %}
+                <p>There is a value</p>
+                {% else %}
+                <p>There is not a value</p>
+                {% endif %}
+            </div>
+        </div>
+
+    {% endblock %}
 </html>
