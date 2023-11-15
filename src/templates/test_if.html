@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-    <title>
-        <head>
-            Test If for Jinja
-        </head>
-    </title>
+    <head>
+        <h1>
+        Test If for Jinja
+        </h1>
+    </head>
     <form method="POST">
         <label>Value: </label>
         <input type="text" name="value" id="value">
+        <!-- Type determines the type of form. Name will associate the value when submitted-->
         <input type="submit" value="Click here to test the if statement.">
+        <!-- Submit will perform the POST operation to the website, value here shows text on the button-->
     </form>
     {% if value %}
     <p>There is a value</p>

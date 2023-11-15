@@ -19,7 +19,9 @@ def home():
 
 @app.route(f"/test_if", methods=["GET", "POST"])
 def test_if_statement():
-    return render_template("test_if.html", request.form["value"])
+    if request.method == "POST":
+        return render_template("test_if.html", value=request.form["value"])
+    return render_template("test_if.html")
 
 
 if __name__ == "__main__":
