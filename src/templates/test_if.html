@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>
+        <head>
+            Test If for Jinja
+        </head>
+    </title>
+    <form method="POST">
+        <label>Value: </label>
+        <input type="text" name="value" id="value">
+        <input type="submit" value="Click here to test the if statement.">
+    </form>
+    {% if value %}
+    <p>There is a value</p>
+    {% else %}
+    <p>There is not a value</p>
+    {% endif %}
+</html>
