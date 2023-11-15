@@ -4,7 +4,7 @@
     {% block title %}{{title}}{% endblock %}
     {% block content %}
     <h1 class="display-1 text-center">{{title}}</h1>
-    {% if method == "GET" %}
+    {% if method == "GET" or value != "password" %}
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-3 align-items-center">
@@ -16,7 +16,8 @@
             </div>
         </div>
     </div>
-    {% elif method == "POST" %}
+    {% endif %}
+    {% if method == "POST" %}
     <div class="container">
         <div class="row justify-content-center">
             {% if value == "password" %}
