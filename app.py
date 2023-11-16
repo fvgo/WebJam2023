@@ -18,7 +18,7 @@ def about():
 
 @app.route("/courses")
 def courses():
-    if request:
+    if request.values:
         print(request.values["dept"])
         print(request.values["class_number"])
     return render_template("courses.html")
