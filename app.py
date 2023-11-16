@@ -1,13 +1,15 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
+
 
 
 @app.route("/")
 def home():
     # return "<p>This is the HOME page!</p>"
     # API CALL  --> title_variable ????
-    return render_template("index.html", title_variable="hello")
+    # return render_template("index.html", title_variable="hello")
+    return render_template("index.html")
 
 @app.route("/about")
 def about():
@@ -16,6 +18,9 @@ def about():
 
 @app.route("/courses")
 def courses():
+    if request:
+        print(request.values["dept"])
+        print(request.values["class_number"])
     return render_template("courses.html")
     # return "<p>This is the COURSES page!</p>"
 

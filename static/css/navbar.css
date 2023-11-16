@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    font-family: 'Montserrat';
+  }
+  
+  .topnav {
+    overflow: hidden;
+    background-color: #0064a4;
+  }
+  
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 17px 23px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .topnav a:hover {
+    background-color: #ffd200;
+    color: black;
+  }
+
+  .right {
+    text-align: right;
+    float: right;
+}
+  

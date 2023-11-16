@@ -1,0 +1,19 @@
+{% block top %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css')}}">
+    </head>
+    <body style="background-color:#6aa2b8">
+        
+    {% include "navbar.html" %}
+    {% block content %}{% endblock %}
+    {% include "footer.html" %}
+    <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+    </body>
+
+    
+</html>
+    {% endblock %}
