@@ -5,13 +5,14 @@
 {% block content %}
 <div class="container m-3">
     <form action="" class="">
-        <div class="row m-3">
-            <div class="col-auto justify-content-center align-self-center">
+        <div class="row ms-3 my-2">
+            <div class="col-2 text-end align-self-center">
                 <label for="department" class="form-label my-auto">Department: </label>
             </div>
             <div class="col-4">
                 <!--Corresponds to requests.values["dept"]-->
-                <select name="dept" class="form-select form-select-md">
+                <select name="dept" class="form-select form-select-md" selected="">
+                    <option value="" class="disabled">Select a department</option>
                     <option value="AC ENG">AC ENG . . . . . .Academic English</option>
                     <option value="AFAM">AFAM . . . . . . . African American Studies</option>
                     <option value="ANATOMY">ANATOMY . . . .Anatomy and Neurobiology</option>
@@ -165,11 +166,11 @@
             </div>
 
         </div>
-        <div class="row m-3">
-            <div class="col-auto justify-content-center align-self-center">
+        <div class="row ms-3 my-2">
+            <div class="col-2 text-end align-self-center">
                 <label for="class_number" class="form-label my-auto">Class Number:</label>
             </div>
-            <div class="col-3">
+            <div class="col-4 ">
                 <!--Corresponds to requests.values["class_number"]-->
                 <input class="form-control form-control-sm" type="text" name="class_number">
             </div>

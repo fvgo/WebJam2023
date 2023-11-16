@@ -1,6 +1,7 @@
 
 __pycache__/
-
 # Virtual Environments
-venv/
-env/
+.idea/*
+.venv/*
+venv/*
+env/*
