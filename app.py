@@ -21,7 +21,6 @@ def about():
     # return "<p>This is the ABOUT page!</p>"
 
 @app.route("/courses", methods=["GET", "POST"])
-
 def courses():
     form = src.forms.ClassForm()
     # if form.validate_on_submit():
@@ -38,7 +37,8 @@ def courses():
             user_dept = response["payload"][0]["department"]
             user_class_number = response["payload"][0]["courseNumber"]
             user_course = response["payload"][0]["id"]
-            difficulty_average = main.find_difficulty_average(user_course)
+            print(user_course)
+            instructor_difficulty, difficulty_average = main.find_difficulty_average(user_course)
         else:
             error = "Class could not be found."
     return render_template(
@@ -46,9 +46,10 @@ def courses():
         form=form,
         request=request,
         entered_course=user_course,
+        instructors=instructor_difficulty,
         course_returned=difficulty_average,
         error=error
     )
-
+# all_courses=user_course
 if __name__ == "__main__":
     app.run(debug=True, port=5001)

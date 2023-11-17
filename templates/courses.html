@@ -77,6 +77,13 @@
     <div>
         <body>
             <!--- TODO: loop through rating_strings and print each ?? --->
+            {% for instructor, rating in instructors.items() %}
+            {% if rating %}
+            <p>{{instructor}}'s difficulty rating for {{entered_course}} is {{(rating[0] / rating[1])|float(1)|round}}</p>
+            {% else %}
+            <p>No information found for {{instructor}}</p>
+            {% endif %}
+            {% endfor %}
             <p>The difficulty rating of {{ entered_course }} is {{ course_returned }}</p>
         </body>
     </div>

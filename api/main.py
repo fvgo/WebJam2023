@@ -24,21 +24,19 @@ def give_instructor_list(course_id):
     return instructor_list
 
 
-def find_difficulty_average(course_entered: str):
-    # TODO: List of strings for individual professor difficulty
-    # rating_strings = []
-
-    # Records start and finish time for debugging
-    start_time = time.perf_counter()
-
+def find_difficulties(course_entered: str):
+    """
+    Returns a dictionary of teachers to their average difficulty
+    """
     # User enters the course they want
     course_number = generate_response("courses", course_entered)["payload"]["courseNumber"]
 
     # Gets list of instructors that have taught that course
     course_instructors = give_instructor_list(course_entered)
 
-    total_difficulty_sum = 0
-    total_rating_count = 0
+    # Dictionary of the instructor to corresponding data
+    # None if there is no data
+    instructor_difficulty = {}
 
     # Print statement for debugging
     print(f"{len(course_instructors)} {course_entered} instructors found")
@@ -62,13 +60,31 @@ def find_difficulty_average(course_entered: str):
             if rating_count:
                 # TODO: rating_strings.append(f"{instructor}'s difficulty rating for {course_entered} is {round(difficulty_sum/rating_count, 1)}")
                 print(f"{instructor}'s difficulty rating for {course_entered} is {round(difficulty_sum/rating_count, 1)}")
+                instructor_difficulty[instructor] = (difficulty_sum, rating_count)
             else:
                 # TODO: rating_strings.append(f"No information found for {instructor}")
                 print(f"No information found for {instructor}")
+                instructor_difficulty[instructor] = None
 
-            total_difficulty_sum += difficulty_sum
-            total_rating_count += rating_count
-            
+    return instructor_difficulty
+
+
+def find_difficulty_average(course_entered: str):
+    """
+    Returns the professor ratings and the average class rating
+    Return: (instructor_difficulty, difficulty_average)
+    """
+    # TODO: List of strings for individual professor difficulty
+    # rating_strings = []
+
+    # Records start and finish time for debugging
+    start_time = time.perf_counter()
+
+    instructor_difficulty = find_difficulties(course_entered)
+    
+    total_difficulty_sum = sum(x[0] for x in instructor_difficulty.values() if x)
+    total_rating_count = sum(x[1] for x in instructor_difficulty.values() if x)
+
     # Calculates the average difficulty rating of that course across instructors
     difficulty_average = None
     if total_rating_count != 0:
@@ -79,5 +95,5 @@ def find_difficulty_average(course_entered: str):
     finish_time = time.perf_counter()
     print(f"{finish_time - start_time} seconds to run")
 
-    return difficulty_average
+    return instructor_difficulty, difficulty_average
     # TODO: return rating_strings
