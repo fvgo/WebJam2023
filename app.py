@@ -29,6 +29,7 @@ def courses():
     difficulty_average = "__________"
     user_dept = request.values.get("dept_selected")
     user_class_number = request.values.get("class_number")
+    instructor_difficulty = {}
     url = f"https://api-next.peterportal.org/v1/rest/courses?department={user_dept}&courseNumber={user_class_number}"
     error = ""
     if form.validate_on_submit():

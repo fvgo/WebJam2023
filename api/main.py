@@ -1,6 +1,7 @@
 """
 Utilizes Nobelz's RateMyProfessors API to create a difficulty rating for a given UCI course based on RMP reviews.
 """
+import threading
 import requests
 import time
 from api import scraper
@@ -40,9 +41,9 @@ def find_difficulties(course_entered: str):
 
     # Print statement for debugging
     print(f"{len(course_instructors)} {course_entered} instructors found")
-
-    # Iterates through instructors and looks them up on RMP
-    for instructor in course_instructors:
+    
+    
+    def search_instructor(instructor):
         # Grabs instructor's last name
         instructor_name = instructor.split()[-1]
         professor = scraper.get_professor_by_school_and_name(SCHOOL, instructor_name)
@@ -58,13 +59,41 @@ def find_difficulties(course_entered: str):
 
             # Print statements for debugging
             if rating_count:
-                # TODO: rating_strings.append(f"{instructor}'s difficulty rating for {course_entered} is {round(difficulty_sum/rating_count, 1)}")
                 print(f"{instructor}'s difficulty rating for {course_entered} is {round(difficulty_sum/rating_count, 1)}")
                 instructor_difficulty[instructor] = (difficulty_sum, rating_count)
             else:
-                # TODO: rating_strings.append(f"No information found for {instructor}")
                 print(f"No information found for {instructor}")
                 instructor_difficulty[instructor] = None
+    
+
+    # Iterates through instructors and looks them up on RMP
+    for instructor in course_instructors:
+        search_thread = threading.Thread(target=search_instructor, args=(instructor,))
+        search_thread.start()
+        """
+        # Grabs instructor's last name
+        instructor_name = instructor.split()[-1]
+        professor = scraper.get_professor_by_school_and_name(SCHOOL, instructor_name)
+        # If the instructor is on there
+        if professor is not None:
+            # Iterates through their ratings and if it's for the course the user wants, adds the difficulty to a sum
+            difficulty_sum = 0
+            rating_count = 0
+            for rating in professor.get_ratings():
+                if course_number in rating.class_name:
+                    difficulty_sum += rating.difficulty
+                    rating_count += 1
+
+            # Print statements for debugging
+            if rating_count:
+                print(f"{instructor}'s difficulty rating for {course_entered} is {round(difficulty_sum/rating_count, 1)}")
+                instructor_difficulty[instructor] = (difficulty_sum, rating_count)
+            else:
+                print(f"No information found for {instructor}")
+                instructor_difficulty[instructor] = None
+        """
+    while(len(instructor_difficulty) != len(course_instructors)):
+        continue
 
     return instructor_difficulty
 
@@ -74,8 +103,6 @@ def find_difficulty_average(course_entered: str):
     Returns the professor ratings and the average class rating
     Return: (instructor_difficulty, difficulty_average)
     """
-    # TODO: List of strings for individual professor difficulty
-    # rating_strings = []
 
     # Records start and finish time for debugging
     start_time = time.perf_counter()
@@ -96,4 +123,3 @@ def find_difficulty_average(course_entered: str):
     print(f"{finish_time - start_time} seconds to run")
 
     return instructor_difficulty, difficulty_average
-    # TODO: return rating_strings
