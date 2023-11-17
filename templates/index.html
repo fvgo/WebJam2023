@@ -4,91 +4,96 @@
 {% block content %}
 <body>
 
+	<!--- <center><h1 style="color: white">ABOUT</h1></center> --->
+	<!---
+		<p class="text-center">Home Paragraph Text</p>
 
-
-
-  <p class="text-center">Home Paragraph Text</p>
-
-  <div class="container">
-	<div class="row">
-		<button class="btn btn-link" href="about">About</button>
-		<button class="btn btn-link" href="courses">Courses</button>
-	</div>
-  </div>
+		<div class="container">
+			<div class="row">
+				<button class="btn btn-link" href="about">About</button>
+				<button class="btn btn-link" href="courses">Courses</button>
+			</div>
+		</div>
+	--->
   
-  <!---
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        
-      </div>
-    </div>
-  </div>
-	-->
+	<!---
+		<div class="container">
+			<div class="row">
+			<div class="col">
+				
+			</div>
+			</div>
+		</div>
+	--->
 
-  <div id="carousel_captions" class="carousel slide">
-	<div class="carousel-indicators">
-	  <button type="button" data-bs-target="#carousel_captions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-	  <button type="button" data-bs-target="#carousel_captions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-	  <button type="button" data-bs-target="#carousel_captions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-	  <button type="button" data-bs-target="#carousel_captions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-	  <button type="button" data-bs-target="#carousel_captions" data-bs-slide-to="4" aria-label="Slide 5"></button>
-	  <button type="button" data-bs-target="#carousel_captions" data-bs-slide-to="5" aria-label="Slide 6"></button>
+	<div id="carousel_captions" class="carousel slide">
+		<div class="carousel-indicators">
+		<button type="button" data-bs-target="#carousel_captions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+		<button type="button" data-bs-target="#carousel_captions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+		<button type="button" data-bs-target="#carousel_captions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+		<button type="button" data-bs-target="#carousel_captions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+		<button type="button" data-bs-target="#carousel_captions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+		<button type="button" data-bs-target="#carousel_captions" data-bs-slide-to="5" aria-label="Slide 6"></button>
+		</div>
+		<div class="carousel-inner">
+
+		<div class="carousel-item active">
+			<img src="{{url_for('static', filename='img/indecisive2.png')}}" class="d-block w-100">
+			<div class="carousel-caption d-none d-md-block">
+			<h5>Choosing classes can be a challenge...</h5>
+			</div>
+		</div>
+
+		<div class="carousel-item">
+			<img src="{{url_for('static', filename='img/class_struggles.png')}}" class="d-block w-100">
+			<div class="carousel-caption d-none d-md-block">
+			<h5>...you might end up with a quarter of hard courses.</h5>
+			</div>
+		</div>
+
+		<div class="carousel-item">
+			<img src="{{url_for('static', filename='img/sanity_check1.png')}}" class="d-block w-100">
+			<div class="carousel-caption d-none d-md-block">
+			<h5>Introducing...ANTEATER SANITY CHECK!</h5>
+			</div>
+		</div>
+
+		<div class="carousel-item">
+			<img src="{{url_for('static', filename='img/class_ratings.png')}}" class="d-block w-100">
+			<div class="carousel-caption d-none d-md-block">
+			<h5>Check out class difficulty before you enroll!</h5>
+			</div>
+		</div>
+
+		<div class="carousel-item">
+			<img src="{{url_for('static', filename='img/dont_let_this_be_you.png')}}" class="d-block w-100">
+			<div class="carousel-caption d-none d-md-block">
+			<h5>Don't let this be you!</h5>
+			</div>
+		</div>
+
+		<div class="carousel-item">
+			<img src="{{url_for('static', filename='img/classes_made_easy.png')}}" class="d-block w-100">
+			<div class="carousel-caption d-none d-md-block">
+			<h5>Use ANTEATER SANITY CHECK to keep your sanity in check during course registration! :D</h5>
+			</div>
+		</div>
+
+		</div>
+		<button class="carousel-control-prev" type="button" data-bs-target="#carousel_captions" data-bs-slide="prev">
+		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#carousel_captions" data-bs-slide="next">
+		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Next</span>
+		</button>
 	</div>
-	<div class="carousel-inner">
-
-	  <div class="carousel-item active">
-		<img src="{{url_for('static', filename='img/indecisive2.png')}}" class="d-block w-100">
-		<div class="carousel-caption d-none d-md-block">
-		  <h5>Choosing classes can be a challenge...</h5>
-		</div>
-	  </div>
-
-	  <div class="carousel-item">
-		<img src="{{url_for('static', filename='img/class_struggles.png')}}" class="d-block w-100">
-		<div class="carousel-caption d-none d-md-block">
-		  <h5>...you might end up with a quarter of hard courses.</h5>
-		</div>
-	  </div>
-
-	  <div class="carousel-item">
-		<img src="{{url_for('static', filename='img/sanity_check1.png')}}" class="d-block w-100">
-		<div class="carousel-caption d-none d-md-block">
-		  <h5>Introducing...ANTEATER SANITY CHECK!</h5>
-		</div>
-	  </div>
-
-	  <div class="carousel-item">
-		<img src="{{url_for('static', filename='img/class_ratings.png')}}" class="d-block w-100">
-		<div class="carousel-caption d-none d-md-block">
-		  <h5>Check out class difficulty before you enroll!</h5>
-		</div>
-	  </div>
-
-	  <div class="carousel-item">
-		<img src="{{url_for('static', filename='img/dont_let_this_be_you.png')}}" class="d-block w-100">
-		<div class="carousel-caption d-none d-md-block">
-		  <h5>Don't let this be you!</h5>
-		</div>
-	  </div>
-
-	  <div class="carousel-item">
-		<img src="{{url_for('static', filename='img/classes_made_easy.png')}}" class="d-block w-100">
-		<div class="carousel-caption d-none d-md-block">
-		  <h5>Use ANTEATER SANITY CHECK to keep your sanity in check during course registration! :D</h5>
-		</div>
-	  </div>
-
-	</div>
-	<button class="carousel-control-prev" type="button" data-bs-target="#carousel_captions" data-bs-slide="prev">
-	  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-	  <span class="visually-hidden">Previous</span>
-	</button>
-	<button class="carousel-control-next" type="button" data-bs-target="#carousel_captions" data-bs-slide="next">
-	  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-	  <span class="visually-hidden">Next</span>
-	</button>
-  </div>
+  
+	<a href="courses">
+		<button type="button" class="btn btn-primary btn-lg">Try AnteaterSanityCheck!</button>
+	</a>
+ 
 
   
 </body>
