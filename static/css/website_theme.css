@@ -1,0 +1,19 @@
+.primary{
+    color: #0064a4 !important;
+}
+
+.primary-fill{
+    background-color: #0064a4 !important;
+}
+
+.secondary{
+    color: #ffd200 !important; 
+}
+
+.secondary-fill{
+    background-color: #ffd200 !important;
+}
+
+.text-white{
+    color: white !important;
+}
