@@ -1,13 +1,11 @@
 {% extends "base.html" %}
 
-{% block title %} About {% endblock %}
-
+{% block title %}{{title}} {% endblock %}
 {% block content %}
-<div class="container m-3">
-    <body>
-        <h1>About</h1>
-        <p>about page</p>
-    </body>
+<body>
+    <h1>About</h1>
+    <p>about page</p>
+
 
     <div class="accordion" id="accordionAbout">
         <div class="accordion-item">
@@ -19,7 +17,7 @@
           <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionAbout">
             <div class="accordion-body">
               We want to answer the question every student has before
-              enrolling in a class: "How bad is it going to be?". Our app
+              enrolling in a class: "How bad is it going to be?" Our app
               gives an estimate of how difficult a particular course at UCI
               might be according to past students.
             </div>
@@ -34,8 +32,8 @@
           <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionAbout">
             <div class="accordion-body">
               Using the RateMyProfessor and PeterPortal APIs, we can give a
-              rough estimate of the average difficulty of a class or its
-              difficulty given a particular professor.
+              rough estimate of the average difficulty of a class based on
+              the professors who have taught it before.
             </div>
           </div>
         </div>
@@ -48,10 +46,13 @@
           <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionAbout">
             <div class="accordion-body">
               The difficulty scores are based on the reviews of past students
-              who have taken the same courses at UCI.
+              who have taken the same course at UCI.
             </div>
           </div>
         </div>
-    </div>
+      </div>
 
+
+
+</body>
 {% endblock %}
