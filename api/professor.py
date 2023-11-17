@@ -13,7 +13,7 @@ import os
 import datetime
 
 from functools import total_ordering
-from school import School
+from .school import School
 
 current_path = os.path.dirname(__file__)
 with open(os.path.join(current_path, "json/ratingsquery.json"), 'r') as f:

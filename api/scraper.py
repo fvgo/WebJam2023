@@ -11,8 +11,8 @@ import re
 import json
 import os
 
-from professor import Professor
-from school import School
+from .professor import Professor
+from .school import School
 
 
 with open(os.path.join(os.path.dirname(__file__), "json/header.json"), 'r') as f:

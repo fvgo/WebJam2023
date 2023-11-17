@@ -1,10 +1,10 @@
 """
-Utilizes Nobelz's api API to create a difficulty rating for a given UCI course based on RMP reviews.
+Utilizes Nobelz's RateMyProfessors API to create a difficulty rating for a given UCI course based on RMP reviews.
 """
 import requests
-import api
+from api import scraper
 
-SCHOOL = api.get_school_by_name("UC Irvine")
+SCHOOL = scraper.get_school_by_name("UC Irvine")
 
 # For getting JSON responses for courses or instructors
 def generate_response(input_type: str, input_id: str):
@@ -40,7 +40,7 @@ def find_difficulty_average(course_entered: str):
     for instructor in course_instructors:
         # Grabs instructor's last name
         instructor_name = instructor.split()[-1]
-        professor = api.get_professor_by_school_and_name(SCHOOL, instructor_name)
+        professor = scraper.get_professor_by_school_and_name(SCHOOL, instructor_name)
         # If the instructor is on there
         if professor is not None:
             # Iterates through their ratings and if it's for the course the user wants, adds the difficulty to a sum
@@ -64,12 +64,5 @@ def find_difficulty_average(course_entered: str):
     difficulty_average = None
     if total_rating_count != 0:
         difficulty_average = round(total_difficulty_sum/total_rating_count, 1)
+        print(f"The difficulty rating of {course_entered} is {difficulty_average}")
     return difficulty_average
-
-if __name__ == "__main__":
-    user_course = "I&CSCI45C"
-    # Print statements for debugging
-    print("Loading...")
-    difficulty_rating = find_difficulty_average(user_course)
-    print(f"The difficulty rating of {user_course} is {difficulty_rating}")
-    

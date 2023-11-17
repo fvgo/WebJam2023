@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 
-{% block title %}{{title}} {% endblock %}
-{% block content %}
-<body>
-    <h1>About</h1>
-    <p>about page</p>
+{% block title %} About {% endblock %}
 
+{% block content %}
+<div class="container m-3">
+    <body>
+        <h1>About</h1>
+        <p>about page</p>
+    </body>
 
     <div class="accordion" id="accordionAbout">
         <div class="accordion-item">
@@ -44,9 +46,6 @@
             </div>
           </div>
         </div>
-      </div>
+    </div>
 
-
-
-</body>
 {% endblock %}

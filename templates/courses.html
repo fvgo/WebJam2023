@@ -4,6 +4,11 @@
 
 {% block content %}
 <div class="container m-3">
+    <body>
+        <h1>Courses</h1>
+        <p>courses page</p>
+    </body>
+
     <form method="POST" action="" class="needs-validation" no-validate>
         {{form.csrf_token()}}
         <div class="row ms-3 my-2">
@@ -54,6 +59,14 @@
             </div>
         </div>
     </form>
+
+    <div>
+        <body>
+            <p>The difficulty rating of {{ entered_course }} is {{ course_returned }}</p>
+        </body>
+    </div>
+    
 </div>
+
 {{form.departments}}
 {% endblock %}
