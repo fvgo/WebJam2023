@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request
+import src.forms
 
 app = Flask(__name__)
-
+app.config["SECRET_KEY"] = "HASHVALUE"
 
 
 @app.route("/")
@@ -16,12 +17,15 @@ def about():
     return render_template("about.html")
     # return "<p>This is the ABOUT page!</p>"
 
-@app.route("/courses")
+@app.route("/courses", methods=["GET", "POST"])
 def courses():
-    if request:
-        print(request.values["dept"])
-        print(request.values["class_number"])
-    return render_template("courses.html")
+    form = src.forms.ClassForm()
+    # if form.validate_on_submit():
+    #     render_template("courses.html", form=form)
+    form.validate_on_submit()
+    print(form.errors)
+    print(request.values)
+    return render_template("courses.html", form=form, request=request)
     # return "<p>This is the COURSES page!</p>"
 
 if __name__ == "__main__":
