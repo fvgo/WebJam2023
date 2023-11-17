@@ -22,8 +22,9 @@
                     {% for department in form.dept_selected.choices %}
                     {% if request.values["dept_selected"] == department[0]%}
                     <option name="dept" value="{{department[0]}}" selected>{{department[1]}}</option>
-                    {% endif %}
+                    {% else %}
                     <option name="dept" value="{{department[0]}}">{{department[1]}}</option>
+                    {% endif %}
                     {% endfor %}
                     {% else %}
                     <option selected disabled value="">Select a department</option>
@@ -54,11 +55,21 @@
             </div>
         </div>
         <div class="row ms-3 my-2 justify-content-center">
-            <div class="col-3 align-self-center text-center">
+            <div class="col-3">
                 {{form.submit(class="btn btn-light rounded-pill")}}
             </div>
         </div>
     </form>
+
+    {% if error %}
+    <div class="container">
+        <div class="row">
+            <div class="col-4 align-self-center text-center px-0 mx-auto">
+                <div class="alert alert-danger">{{error}}</div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
 
     <div>
         <body>

@@ -31,6 +31,7 @@ def courses():
     user_dept = request.values.get("dept_selected")
     user_class_number = request.values.get("class_number")
     url = f"https://api-next.peterportal.org/v1/rest/courses?department={user_dept}&courseNumber={user_class_number}"
+    error = ""
     if form.validate_on_submit():
         response = requests.get(url).json()
         if response["payload"]:
@@ -38,12 +39,15 @@ def courses():
             user_class_number = response["payload"][0]["courseNumber"]
             user_course = response["payload"][0]["id"]
             difficulty_average = main.find_difficulty_average(user_course)
+        else:
+            error = "Class could not be found."
     return render_template(
         "courses.html",
         form=form,
         request=request,
         entered_course=user_course,
-        course_returned=difficulty_average
+        course_returned=difficulty_average,
+        error=error
     )
 
 if __name__ == "__main__":

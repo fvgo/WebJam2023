@@ -15,4 +15,4 @@ class ClassForm(FlaskForm):
                                      choices=dept_abbrev_pair(),
                                      validators=[wtforms.validators.InputRequired(message="Please select a department."), wtforms.validators.NoneOf(("ALL", ""))])
     class_number = wtforms.StringField(label="class_number", validators=[wtforms.validators.length(1, message="Please enter a class number.")])
-    submit = wtforms.SubmitField(label="submit")
+    submit = wtforms.SubmitField(label="Submit")
