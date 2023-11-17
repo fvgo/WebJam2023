@@ -4,90 +4,91 @@
 
 {% block content %}
 <div class="container m-3">
-    <body>
+<body>
+    <strong><h1 style="color: white" class="text-center">COURSES</h1></strong>
+    <!---
+        <h1>Courses</h1>
+        <p>courses page</p>
         <center><h1 style="color: white">COURSES</h1></center>
-        <!---
-            <h1>Courses</h1>
-            <p>courses page</p>
-        --->
-    </body>
+    --->
+</body>
 
-    <form method="POST" action="" class="needs-validation" no-validate>
-        {{form.csrf_token()}}
-        <div class="row ms-3 my-2">
-            <div class="col-2 text-end align-self-center">
-                <label for="department" class="form-label my-auto">Department: </label>
-            </div>
-            <div class="col-4 align-self-center">
-                <!--Corresponds to requests.values["dept"]-->
-                <select id="dept_selected" name="dept_selected" class="form-select form-select-md py-1" selected="">
-                    {% if request.values["dept_selected"] %}
-                    {% for department in form.dept_selected.choices %}
-                    {% if request.values["dept_selected"] == department[0]%}
-                    <option name="dept" value="{{department[0]}}" selected>{{department[1]}}</option>
-                    {% else %}
-                    <option name="dept" value="{{department[0]}}">{{department[1]}}</option>
-                    {% endif %}
-                    {% endfor %}
-                    {% else %}
-                    <option selected disabled value="">Select a department</option>
-                    {% for department in form.dept_selected.choices %}
-                    <option name="dept" value="{{department[0]}}">{{department[1]}}</option>
-                    {% endfor %}
-                    {% endif %}
-                </select>
-            </div>
-            <div class="col-6 align-self-center">
-                {% if "dept_selected" in form.errors%}
-                <div class="alert alert-danger ps-2 py-1 m-0">{{ ", ".join(form.errors["dept_selected"])}}</div>
+<form method="POST" action="" class="needs-validation" no-validate>
+    {{form.csrf_token()}}
+    <div class="row ms-3 my-2">
+        <div class="col-2 text-end align-self-center">
+            <label for="department" class="form-label my-auto" style="color: white">Department: </label>
+        </div>
+        <div class="col-4 align-self-center">
+            <!--Corresponds to requests.values["dept"]-->
+            <select id="dept_selected" name="dept_selected" class="form-select form-select-md py-1" selected="">
+                {% if request.values["dept_selected"] %}
+                {% for department in form.dept_selected.choices %}
+                {% if request.values["dept_selected"] == department[0]%}
+                <option name="dept" value="{{department[0]}}" selected>{{department[1]}}</option>
+                {% else %}
+                <option name="dept" value="{{department[0]}}">{{department[1]}}</option>
                 {% endif %}
-            </div>
-        </div>
-        <div class="row ms-3 my-2">
-            <div class="col-2 text-end align-self-center">
-                <label for="class_number" class="form-label my-auto">Class Number:</label>
-            </div>
-            <div class="col-4 has-validation">
-                <!--Corresponds to requests.values["class_number"]-->
-                {{form.class_number(class="form-control form-control-sm py-1")}}
-            </div>
-            <div class="col-6 align-self-center">
-                {% if "class_number" in form.errors%}
-                <div class="alert alert-danger ps-2 py-1 m-0">{{ ", ".join(form.errors["class_number"])}}</div>
+                {% endfor %}
+                {% else %}
+                <option selected disabled value="">Select a department</option>
+                {% for department in form.dept_selected.choices %}
+                <option name="dept" value="{{department[0]}}">{{department[1]}}</option>
+                {% endfor %}
                 {% endif %}
-            </div>
+            </select>
         </div>
-        <div class="row ms-3 my-2 justify-content-center">
-            <div class="col-3">
-                {{form.submit(class="btn btn-light rounded-pill")}}
-            </div>
-        </div>
-    </form>
-
-    {% if error %}
-    <div class="container">
-        <div class="row">
-            <div class="col-4 align-self-center text-center px-0 mx-auto">
-                <div class="alert alert-danger">{{error}}</div>
-            </div>
-        </div>
-    </div>
-    {% endif %}
-
-    <div>
-        <body>
-            <!--- TODO: loop through rating_strings and print each ?? --->
-            {% for instructor, rating in instructors.items() %}
-            {% if rating %}
-            <p>{{instructor}}'s difficulty rating for {{entered_course}} is {{(rating[0] / rating[1])|round(1)}}</p>
-            {% else %}
-            <p>No information found for {{instructor}}</p>
+        <div class="col-6 align-self-center">
+            {% if "dept_selected" in form.errors%}
+            <div class="alert alert-danger ps-2 py-1 m-0">{{ ", ".join(form.errors["dept_selected"])}}</div>
             {% endif %}
-            {% endfor %}
-            <p>The difficulty rating of {{ entered_course }} is {{ course_returned }}</p>
-        </body>
+        </div>
     </div>
-    
+    <div class="row ms-3 my-2">
+        <div class="col-2 text-end align-self-center">
+            <label for="class_number" class="form-label my-auto" style="color: white">Class Number:</label>
+        </div>
+        <div class="col-4 has-validation">
+            <!--Corresponds to requests.values["class_number"]-->
+            {{form.class_number(class="form-control form-control-sm py-1")}}
+        </div>
+        <div class="col-6 align-self-center">
+            {% if "class_number" in form.errors%}
+            <div class="alert alert-danger ps-2 py-1 m-0">{{ ", ".join(form.errors["class_number"])}}</div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row ms-3 my-2 justify-content-center">
+        <div class="col-3">
+            {{form.submit(class="btn btn-light rounded-pill")}}
+        </div>
+    </div>
+</form>
+
+{% if error %}
+<div class="container">
+    <div class="row">
+        <div class="col-4 align-self-center text-center px-0 mx-auto">
+            <div class="alert alert-danger">{{error}}</div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<div>
+    <body>
+        <!--- TODO: loop through rating_strings and print each ?? --->
+        {% for instructor, rating in instructors.items() %}
+        {% if rating %}
+        <p style="color: white">{{instructor}}'s difficulty rating for {{entered_course}} is {{(rating[0] / rating[1])|round(1)}}</p>
+        {% else %}
+        <p style="color: white">No information found for {{instructor}}</p>
+        {% endif %}
+        {% endfor %}
+        <h4 style="color: white"><b>The average difficulty rating of {{ entered_course }} is {{ course_returned }}</b></h4>
+    </body>
+</div>
+
 </div>
 
 {{form.departments}}
