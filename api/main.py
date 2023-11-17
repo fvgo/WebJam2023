@@ -24,6 +24,9 @@ def give_instructor_list(course_id):
 
 
 def find_difficulty_average(course_entered: str):
+    # TODO: List of strings for individual professor difficulty
+    # rating_strings = []
+
     # User enters the course they want
     course_number = generate_response("courses", course_entered)["payload"]["courseNumber"]
 
@@ -53,8 +56,10 @@ def find_difficulty_average(course_entered: str):
 
             # Print statements for debugging
             if rating_count:
+                # TODO: rating_strings.append(f"{instructor}'s difficulty rating for {course_entered} is {round(difficulty_sum/rating_count, 1)}")
                 print(f"{instructor}'s difficulty rating for {course_entered} is {round(difficulty_sum/rating_count, 1)}")
             else:
+                # TODO: rating_strings.append(f"No information found for {instructor}")
                 print(f"No information found for {instructor}")
 
             total_difficulty_sum += difficulty_sum
@@ -66,3 +71,4 @@ def find_difficulty_average(course_entered: str):
         difficulty_average = round(total_difficulty_sum/total_rating_count, 1)
         print(f"The difficulty rating of {course_entered} is {difficulty_average}")
     return difficulty_average
+    # TODO: return rating_strings
