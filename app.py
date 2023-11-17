@@ -26,20 +26,18 @@ def courses():
     form = src.forms.ClassForm()
     # if form.validate_on_submit():
     #     render_template("courses.html", form=form)
-    form.validate_on_submit()
-    print(form.errors)
     user_course = "__________"
     difficulty_average = "__________"
     user_dept = request.values.get("dept_selected")
     user_class_number = request.values.get("class_number")
     url = f"https://api-next.peterportal.org/v1/rest/courses?department={user_dept}&courseNumber={user_class_number}"
-    response = requests.get(url).json()
-    if response["payload"]:
-        user_dept = response["payload"][0]["department"]
-        user_class_number = response["payload"][0]["courseNumber"]
-        user_course = response["payload"][0]["id"]
-        difficulty_average = main.find_difficulty_average(user_course)
-        # return "<p>This is the COURSES page!</p>"
+    if form.validate_on_submit():
+        response = requests.get(url).json()
+        if response["payload"]:
+            user_dept = response["payload"][0]["department"]
+            user_class_number = response["payload"][0]["courseNumber"]
+            user_course = response["payload"][0]["id"]
+            difficulty_average = main.find_difficulty_average(user_course)
     return render_template(
         "courses.html",
         form=form,
