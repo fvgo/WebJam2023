@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 import src.forms
 import requests
-from functools import lru_cache
 from api import main
 
 app = Flask(__name__)
@@ -10,7 +9,6 @@ app.config["SECRET_KEY"] = "HASHVALUE"
 
 
 @app.route("/")
-@lru_cache(16)
 def home():
     # return "<p>This is the HOME page!</p>"
     # API CALL  --> title_variable ????
@@ -23,7 +21,6 @@ def about():
     # return "<p>This is the ABOUT page!</p>"
 
 @app.route("/courses", methods=["GET", "POST"])
-@lru_cache(16)
 def courses():
     form = src.forms.ClassForm()
     # if form.validate_on_submit():
